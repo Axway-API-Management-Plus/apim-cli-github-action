@@ -40,11 +40,13 @@ The directory containing your users. Each user in a separate directory.
 ## Example usage
 
 uses: Axway-API-Management-Plus/apim-cli-github-action@v1.5.1
-with:
-  apimHostname: 'manager.customer.com'
-  apimUsername: 'apiadmin'
-  apimPassword: '1234567890'
-  apimExtraArgs: '-port 443 -force -returnCodeMapping 10:0'
-  apiDirectory: 'axway/api-management/APIs'
-env:
-  BACKEND_HOST: 'http://mocked-apis:8280'
+```yaml
+        with:
+          apimHostname: 'manager.customer.com'
+          apimUsername: 'apiadmin'
+          apimPassword: '1234567890'
+          apimExtraArgs: '-port 443 -force -returnCodeMapping 10:0'
+          apiDirectory: 'axway/api-management/APIs'
+        env:
+          BACKEND_HOST: 'http://mocked-apis:8280'
+```
