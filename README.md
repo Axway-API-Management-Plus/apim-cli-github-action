@@ -1,1 +1,2 @@
-# apim-cli-github-action
+# Axway APIM-CLI GitHub Action
+
