@@ -1,6 +1,6 @@
 FROM adoptopenjdk/openjdk11:debianslim-jre
 
-ADD https://github.com/Axway-API-Management-Plus/apim-cli/releases/download/apimcli-1.5.0/axway-apimcli-1.5.0.tar.gz /
+ADD https://github.com/Axway-API-Management-Plus/apim-cli/releases/download/apimcli-1.5.0/axway-apimcli-1.5.0.zip /
 
 # Copies your code file  repository to the filesystem
 COPY entrypoint.sh /entrypoint.sh
