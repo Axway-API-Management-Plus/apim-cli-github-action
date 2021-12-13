@@ -1,2 +1,50 @@
 # Axway APIM-CLI GitHub Action
 
+This action helps them use the Axway APIM CLI in a GitHub Actions workflow. You can import APIs, applications, organizations, and users into an API manager based on a specified directory structure. 
+Alternatively, you can call the APIM CLI directly according to your needs.
+
+## Inputs
+
+## `apimHostname`
+
+**Required** The hostname of the API-Manager to use.
+
+## `apimUsername`
+
+**Required** The username to use for the API-Manager.
+
+## `apimPassword`
+
+**Required** The password to use for the API-Manager.
+
+## `apimExtraArgs`
+
+**Required** Some extra parameters which should be used by the APIM-CLI. For instance '-port 443', '-force' or '-returnCodeMapping 10:0'
+
+## `apiDirectory`
+
+The directory containing your APIs. Each API in a separate directory.
+
+## `orgDirectory`
+
+The directory containing your organizations. Each organization in a separate directory.
+
+## `appDirectory`
+
+The directory containing your applications. Each application in a separate directory.
+
+## `userDirectory`
+
+The directory containing your users. Each user in a separate directory.
+
+## Example usage
+
+uses: Axway-API-Management-Plus/apim-cli-github-action@v1.5.1
+with:
+  apimHostname: 'manager.customer.com'
+  apimUsername: 'apiadmin'
+  apimPassword: '1234567890'
+  apimExtraArgs: '-port 443 -force -returnCodeMapping 10:0'
+  apiDirectory: 'axway/api-management/APIs'
+env:
+  BACKEND_HOST: 'http://mocked-apis:8280'

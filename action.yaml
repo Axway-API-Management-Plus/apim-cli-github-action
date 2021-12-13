@@ -1,13 +1,39 @@
 # action.yaml
 name: "Axway APIM-CLI Github Action"
-description: "Use the Axway APIM-CLI in you GitHub action workflows."
+description: "Use the Axway APIM-CLI in you GitHub action workflows. You can import APIs, users, organizations and applications in batch mode based on specified directories."
+branding:
+  icon: 'award'  
+  color: 'red'
+  
 inputs:
-  apimCLIArgs:
-    description: "All arguments required by the APIM-CLI to run. For example 'api import -host manager.hostname.com -port 443 -u apiadmin -p mypassword'"
+  apimHostname:
+    description: "The API-Manager hostname without port or protocol."
     required: true
-    default: 1
+  apimUsername:
+    description: "The API-Manager username."
+    required: true
+  apimPassword:
+    description: "The API-Manager password."
+    required: true
+  apimExtraArgs:
+    description: "Some extra parameters which should be used by the APIM-CLI. For instance '-port 443', '-force' or '-returnCodeMapping 10:0'"
+    required: false
+  apiDirectory:
+    description: "The directory containing your APIs. Each API in a separate directory."
+    required: false
+  orgDirectory:
+    description: "The directory containing your organizations. Each organization in a separate directory."
+    required: false
+  appDirectory:
+    description: "The directory containing your applications. Each application in a separate directory."
+    required: false
+  userDirectory:
+    description: "The directory containing your users. Each user in a separate directory."
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.apimCLIArgs}}
+    - ${{ inputs.apimHostname}}
+    - ${{ inputs.apimUsername}}
+    - ${{ inputs.apimPassword}}
