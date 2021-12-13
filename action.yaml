@@ -9,6 +9,10 @@ inputs:
   apimHostname:
     description: "The API-Manager hostname without port or protocol."
     required: true
+  apimPort:
+    description: "The API-Manager port."
+    required: true
+    default: "8075"
   apimUsername:
     description: "The API-Manager username."
     required: true
@@ -31,7 +35,7 @@ inputs:
     description: "The directory containing your users. Each user in a separate directory."
     required: false
   apimCLICommand:
-    description: "Control the APIM-CLI command yourself. For example: 'apim api check-certs'. You may combine this with apimExtraArgs depending on you the command you use."
+    description: "Run an APIM-CLI command. For example: 'apim api check-certs'. You may combine this with apimExtraArgs depending on you the command you use."
     required: false
 runs:
   using: "docker"

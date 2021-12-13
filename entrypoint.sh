@@ -1,15 +1,13 @@
 #!/bin/bash
 
 CLI=/apim-cli-1.5.1/scripts/apim.sh
-echo "Using API-Manager: https://${INPUT_APIMHOSTNAME}:"
+echo "Using API-Manager: https://${INPUT_APIMHOSTNAME}:${INPUT_APIMPORT}"
 
-apimCLIArgs="-h ${INPUT_APIMHOSTNAME} -u ${INPUT_APIMUSERNAME} -p ${INPUT_APIMPASSWORD} ${INPUT_APIMEXTRAARGS}"
+apimCLIArgs="-h ${INPUT_APIMHOSTNAME} -port ${INPUT_APIMPORT} -u ${INPUT_APIMUSERNAME} -p ${INPUT_APIMPASSWORD} ${INPUT_APIMEXTRAARGS}"
 
 if ! [ -z ${INPUT_APIMCLICOMMAND} ];then
     echo "Calling APIM-CLI with given command: ${INPUT_APIMCLICOMMAND}"
-    set -x
     $CLI ${INPUT_APIMCLICOMMAND} ${apimCLIArgs} || exit 99;
-    exit
 fi
 
 # Import all users
