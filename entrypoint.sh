@@ -9,7 +9,7 @@ printenv
 $CLI
 
 # Import all users
-if [ ${INPUT_USERDIRECTORY} != "" ];then
+if ! [ -z ${INPUT_USERDIRECTORY} ];then
     echo "Importing users from directory: '${INPUT_USERDIRECTORY}'"
     cd ${INPUT_USERDIRECTORY} || exit 99;
     for userDirectory in `find . -mindepth 1 -type d`
@@ -20,7 +20,7 @@ if [ ${INPUT_USERDIRECTORY} != "" ];then
 fi
 
 # Import all organizations
-if [ ${INPUT_ORGDIRECTORY} != "" ];then
+if ! [ -z ${INPUT_ORGDIRECTORY} ];then
     echo "Importing organizations from directory: '${INPUT_ORGDIRECTORY}'"
     cd ${INPUT_ORGDIRECTORY} || exit 99;
     for orgDirectory in `find . -mindepth 1 -type d`
@@ -31,7 +31,7 @@ if [ ${INPUT_ORGDIRECTORY} != "" ];then
 fi
 
 # Import all applications
-if [ ${INPUT_APPDIRECTORY} != "" ];then
+if ! [ -z ${INPUT_APPDIRECTORY} ];then
     echo "Importing applications from directory: '${INPUT_APPDIRECTORY}'"
     cd ${INPUT_APPDIRECTORY} || exit 99;
     for appDirectory in `find . -mindepth 1 -type d`
@@ -42,7 +42,7 @@ if [ ${INPUT_APPDIRECTORY} != "" ];then
 fi
 
 # Import all APIs
-if [ ${INPUT_APIDIRECTORY} != "" ];then
+if ! [ -z ${INPUT_APIDIRECTORY} ];then
     echo "Importing APIs from directory: '${INPUT_APIDIRECTORY}'"
     cd ${INPUT_APIDIRECTORY} || exit 99;
 for apiDirectory in `find . -mindepth 1 -type d`
