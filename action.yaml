@@ -11,7 +11,7 @@ inputs:
     required: true
   apimPort:
     description: "The API-Manager port."
-    required: true
+    required: false
     default: "8075"
   apimUsername:
     description: "The API-Manager username."

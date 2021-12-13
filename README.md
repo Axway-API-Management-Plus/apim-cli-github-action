@@ -17,6 +17,10 @@ Alternatively, you can call the APIM CLI directly according to your needs.
 
 **Required** The password to use for the API-Manager.
 
+## `apimPort`
+
+The API-Manager port.
+
 ## `apimExtraArgs`
 
 **Required** Some extra parameters which should be used by the APIM-CLI. For instance '-port 443', '-force' or '-returnCodeMapping 10:0'
@@ -37,16 +41,34 @@ The directory containing your applications. Each application in a separate direc
 
 The directory containing your users. Each user in a separate directory.
 
+## `apimCLICommand`
+
+Run an APIM-CLI command. For example: 'apim api check-certs'. You may combine this with apimExtraArgs depending on you the command you use.
+
 ## Example usage
 
-uses: Axway-API-Management-Plus/apim-cli-github-action@v1.5.1
 ```yaml
+    - name: Import APIs and Applications
+      uses: Axway-API-Management-Plus/apim-cli-github-action@v1.5.1
         with:
           apimHostname: 'manager.customer.com'
           apimUsername: 'apiadmin'
           apimPassword: '1234567890'
           apimExtraArgs: '-port 443 -force -returnCodeMapping 10:0'
           apiDirectory: 'axway/api-management/APIs'
+          appDirectory: 'axway/api-management/Apps'
         env:
           BACKEND_HOST: 'http://mocked-apis:8280'
+```
+
+```yaml
+    - name: Validate certificates
+      uses: Axway-API-Management-Plus/apim-cli-github-action@v1.5.1
+        with:
+          apimHostname: '${{ github.event.inputs.apimHost }}'
+          apimPort: "443"
+          apimUsername: ${{ github.event.inputs.apimUsername }}
+          apimPassword: ${{ github.event.inputs.apimPassword }}
+          apimCLICommand: 'api check-certs'
+          apimExtraArgs: '-days 60'
 ```
