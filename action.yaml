@@ -1,6 +1,6 @@
 # action.yaml
 name: "Axway APIM-CLI Github Action"
-description: "Use the Axway APIM-CLI in you GitHub action workflows. You can import APIs, users, organizations and applications in batch mode based on specified directories."
+description: "Use the Axway APIM-CLI in you GitHub action workflows. Import APIs, users, organizations and applications in batch mode."
 branding:
   icon: 'award'  
   color: 'red'
