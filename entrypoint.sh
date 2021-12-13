@@ -9,35 +9,46 @@ printenv
 $CLI
 
 # Import all users
-cd ${cliData}/Users || exit 99;
-for userDirectory in `find . -mindepth 1 -type d`
-do
-    echo "Import user from config: $orgDirectory"
-    $CLI user import -s ${APIM_CLI_STAGE} -c ${cliData}/Organizations/$orgDirectory/org-config.json
-done
+if [ ${INPUT_USERDIRECTORY} != "" ];then
+    echo "Importing users from directory: '${INPUT_USERDIRECTORY}'"
+    cd ${INPUT_USERDIRECTORY} || exit 99;
+    for userDirectory in `find . -mindepth 1 -type d`
+    do
+        echo "Import user from config: $userDirectory"
+        $CLI user import -s ${APIM_CLI_STAGE} -c ${userDirectory}/user-config.json
+    done
+fi
 
 # Import all organizations
-cd ${cliData}/Organizations || exit 99;
-for orgDirectory in `find . -mindepth 1 -type d`
-do
-    echo "Import organization from config: $orgDirectory"
-    $CLI org import -s ${APIM_CLI_STAGE} -c ${cliData}/Organizations/$orgDirectory/org-config.json
-done
+if [ ${INPUT_ORGDIRECTORY} != "" ];then
+    echo "Importing organizations from directory: '${INPUT_ORGDIRECTORY}'"
+    cd ${INPUT_ORGDIRECTORY} || exit 99;
+    for orgDirectory in `find . -mindepth 1 -type d`
+    do
+        echo "Import organization from config: $orgDirectory"
+        $CLI org import -s ${APIM_CLI_STAGE} -c ${orgDirectory}/org-config.json
+    done
+fi
 
 # Import all applications
-cd ${cliData}/ClientApps || exit 99;
-for appDirectory in `find . -mindepth 1 -type d`
-do
-    echo "Import applicaton from config directory: $appDirectory"
-    $CLI app import -s ${APIM_CLI_STAGE} -c ${cliData}/ClientApps/$appDirectory/application-config.json
-done
+if [ ${INPUT_APPDIRECTORY} != "" ];then
+    echo "Importing applications from directory: '${INPUT_APPDIRECTORY}'"
+    cd ${INPUT_APPDIRECTORY} || exit 99;
+    for appDirectory in `find . -mindepth 1 -type d`
+    do
+        echo "Import applicaton from config directory: $appDirectory"
+        $CLI app import -s ${APIM_CLI_STAGE} -c ${appDirectory}/application-config.json
+    done
+fi
 
 # Import all APIs
-cd ${cliData}/APIs || exit 99;
+if [ ${INPUT_APIDIRECTORY} != "" ];then
+    echo "Importing APIs from directory: '${INPUT_APIDIRECTORY}'"
+    cd ${INPUT_APIDIRECTORY} || exit 99;
 for apiDirectory in `find . -mindepth 1 -type d`
 do
     echo "Import API from config directory: $apiDirectory"
-    $CLI api import -s ${APIM_CLI_STAGE} -c ${cliData}/APIs/$apiDirectory/api-config.json -force
+    $CLI api import -s ${APIM_CLI_STAGE} -c ${apiDirectory}/api-config.json -force
 done
 
 exit
