@@ -1,7 +1,8 @@
 # Axway APIM-CLI GitHub Action
 
-This action helps them use the Axway APIM CLI in a GitHub Actions workflow. You can import APIs, applications, organizations, and users into an API manager based on a specified directory structure. 
-Alternatively, you can call the APIM CLI directly according to your needs.
+This action helps you to use the [Axway APIM CLI](https://github.com/Axway-API-Management-Plus/apim-cli) in a GitHub Actions workflow. You can import APIs, Applications, Organizations, and Users into an API-Manager in Batch-Mode based on a specified directory structure. 
+
+Additionally, you can call the APIM CLI directly with a given command according to your needs.  
 
 ## Inputs
 
