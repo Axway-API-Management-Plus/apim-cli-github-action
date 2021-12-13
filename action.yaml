@@ -1,0 +1,16 @@
+# action.yaml
+name: "Axway APIM-CLI Github Action"
+description: "Use the Axway APIM-CLI in you GitHub action workflows."
+inputs:
+  pokemon_id:
+    description: "number of the pokemon in the pokedex"
+    required: true
+    default: 1
+outputs:
+  pokemon_name:
+    description: "Name des Pokemons"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.pokemon_id}}
