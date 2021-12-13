@@ -6,6 +6,8 @@ echo "Run APIM-CLI with arguments: $@"
 
 printenv
 
+$CLI
+
 # Import all users
 cd ${cliData}/Users || exit 99;
 for userDirectory in `find . -mindepth 1 -type d`
