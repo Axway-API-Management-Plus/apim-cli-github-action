@@ -30,8 +30,8 @@ inputs:
   userDirectory:
     description: "The directory containing your users. Each user in a separate directory."
     required: false
-  apimCLIVersion:
-    description: "If you would like to use a different APIM-CLI version than the default used by the action. Format is: x.y.z"
+  apimCLICommand:
+    description: "Control the APIM-CLI command yourself. For example: 'apim api check-certs'. You may combine this with apimExtraArgs depending on you the command you use."
     required: false
 runs:
   using: "docker"
