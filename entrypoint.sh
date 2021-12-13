@@ -1,6 +1,12 @@
 #!/bin/bash
 
-CLI=/apim-cli-1.5.1/scripts/apim.sh
+if ! [ -z ${INPUT_APIMCLIVERSION} ];then
+    echo "Downloading specified APIM-CLI version: ${INPUT_APIMCLIVERSION}"
+    wget -qO- https://github.com/Axway-API-Management-Plus/apim-cli/releases/download/apimcli-${INPUT_APIMCLIVERSION}/axway-apimcli-${INPUT_APIMCLIVERSION}.tar.gz | tar xvfz  - -C /
+    CLI=/apim-cli-${INPUT_APIMCLIVERSION}/scripts/apim.sh
+else 
+    CLI=/apim-cli-1.5.1/scripts/apim.sh
+fi
 
 apimCLIArgs="-h ${INPUT_APIMHOSTNAME} -u ${INPUT_APIMUSERNAME} -p ${INPUT_APIMPASSWORD} ${INPUT_APIMEXTRAARGS}"
 
