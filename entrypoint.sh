@@ -1,12 +1,9 @@
 #!/bin/bash
+set -x
 
 CLI=/apim-cli-1.5.1/scripts/apim.sh
 
-echo "Run APIM-CLI with arguments: $@"
-
-printenv
-
-$CLI
+apimCLIArgs="-h ${INPUT_APIMHOSTNAME} -u ${INPUT_APIMUSERNAME} -p ${INPUT_APIMPASSWORD} ${INPUT_APIMEXTRAARGS}"
 
 # Import all users
 if ! [ -z ${INPUT_USERDIRECTORY} ];then
@@ -15,7 +12,7 @@ if ! [ -z ${INPUT_USERDIRECTORY} ];then
     for userDirectory in `find . -mindepth 1 -type d`
     do
         echo "Import user from config: $userDirectory"
-        $CLI user import -s ${APIM_CLI_STAGE} -c ${userDirectory}/user-config.json
+        $CLI user import ${apimCLIArgs} -c ${userDirectory}/user-config.json
     done
 fi
 
@@ -26,7 +23,7 @@ if ! [ -z ${INPUT_ORGDIRECTORY} ];then
     for orgDirectory in `find . -mindepth 1 -type d`
     do
         echo "Import organization from config: $orgDirectory"
-        $CLI org import -s ${APIM_CLI_STAGE} -c ${orgDirectory}/org-config.json
+        $CLI org import ${apimCLIArgs} -c ${orgDirectory}/org-config.json
     done
 fi
 
@@ -37,7 +34,7 @@ if ! [ -z ${INPUT_APPDIRECTORY} ];then
     for appDirectory in `find . -mindepth 1 -type d`
     do
         echo "Import applicaton from config directory: $appDirectory"
-        $CLI app import -s ${APIM_CLI_STAGE} -c ${appDirectory}/application-config.json
+        $CLI app import ${apimCLIArgs} -c ${appDirectory}/application-config.json
     done
 fi
 
@@ -48,7 +45,7 @@ if ! [ -z ${INPUT_APIDIRECTORY} ];then
     for apiDirectory in `find . -mindepth 1 -type d`
     do
         echo "Import API from config directory: $apiDirectory"
-        $CLI api import -s ${APIM_CLI_STAGE} -c ${apiDirectory}/api-config.json -force
+        $CLI api import ${apimCLIArgs} -c ${apiDirectory}/api-config.json -force
     done
 fi
 
