@@ -45,10 +45,11 @@ fi
 if ! [ -z ${INPUT_APIDIRECTORY} ];then
     echo "Importing APIs from directory: '${INPUT_APIDIRECTORY}'"
     cd ${INPUT_APIDIRECTORY} || exit 99;
-for apiDirectory in `find . -mindepth 1 -type d`
-do
-    echo "Import API from config directory: $apiDirectory"
-    $CLI api import -s ${APIM_CLI_STAGE} -c ${apiDirectory}/api-config.json -force
-done
+    for apiDirectory in `find . -mindepth 1 -type d`
+    do
+        echo "Import API from config directory: $apiDirectory"
+        $CLI api import -s ${APIM_CLI_STAGE} -c ${apiDirectory}/api-config.json -force
+    done
+fi
 
 exit
