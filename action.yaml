@@ -2,22 +2,12 @@
 name: "Axway APIM-CLI Github Action"
 description: "Use the Axway APIM-CLI in you GitHub action workflows."
 inputs:
-  apimUrl:
-    description: "The API-Manager URL"
-    required: true
-    default: 1
-  apimUsername:
-    description: "The API-Manager username"
-    required: true
-    default: 1
-  apimPassword:
-    description: "The API-Manager password"
+  apimCLIArgs:
+    description: "All arguments required by the APIM-CLI to run. For example 'api import -host manager.hostname.com -port 443 -u apiadmin -p mypassword'"
     required: true
     default: 1
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.apimUrl}}
-    - ${{ inputs.apimUsername}}
-    - ${{ inputs.apimPassword}}
+    - ${{ inputs.apimCLIArgs}}
