@@ -2,15 +2,22 @@
 name: "Axway APIM-CLI Github Action"
 description: "Use the Axway APIM-CLI in you GitHub action workflows."
 inputs:
-  pokemon_id:
-    description: "number of the pokemon in the pokedex"
+  apimUrl:
+    description: "The API-Manager URL"
     required: true
     default: 1
-outputs:
-  pokemon_name:
-    description: "Name des Pokemons"
+  apimUsername:
+    description: "The API-Manager username"
+    required: true
+    default: 1
+  apimPassword:
+    description: "The API-Manager password"
+    required: true
+    default: 1
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.pokemon_id}}
+    - ${{ inputs.apimUrl}}
+    - ${{ inputs.apimUsername}}
+    - ${{ inputs.apimPassword}}
