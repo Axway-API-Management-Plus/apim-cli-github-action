@@ -2,9 +2,9 @@
 name: "Axway APIM-CLI Github Action"
 description: "Use the Axway APIM-CLI in you GitHub action workflows. Import APIs, users, organizations and applications in batch mode."
 branding:
-  icon: 'award'  
+  icon: 'award'
   color: 'red'
-  
+
 inputs:
   apimHostname:
     description: "The API-Manager hostname without port or protocol."
@@ -39,8 +39,4 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.apimHostname}}
-    - ${{ inputs.apimUsername}}
-    - ${{ inputs.apimPassword}}
+  image: "docker://ghcr.io/axway-api-management-plus/apimcli:1.14.7"
