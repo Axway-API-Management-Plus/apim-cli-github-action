@@ -1,5 +1,5 @@
-#!/bin/sh -l
+#!/bin/sh
 
-echo "$1"
-time=$(date)
-echo "time=$time" >> $GITHUB_OUTPUT
+java -Xms64m -Xmx256m -cp "lib/*" com.axway.apim.cli.APIManagerCLI ${INPUT_COMMAND}
+
+
