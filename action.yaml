@@ -40,3 +40,5 @@ inputs:
 runs:
   using: "docker"
   image: "docker://ghcr.io/axway-api-management-plus/apimcli:1.14.7"
+  volumes:
+      - ./:/opt/apim-cli/data
